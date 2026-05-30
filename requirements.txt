@@ -1,0 +1,50 @@
+Invester[Give a good name for this project]
+
+GIT Repository:
+backend: https://github.com/nuwwan/shelby-backend
+frontend: https://github.com/nuwwan/shelby-frontend
+
+This app mainlt tracks the company fanancials and user portfolio datils. This will have past variations of the securities prices for.a longer period of time
+
+Users:
+All users will extend from the base user model.
+- Admin
+- Regular User
+- Feeders
+
+Features:
+- User authentication and authorization(for now,will use google auth and basic email and password auth)
+- Feeders can add and update the financial data of the companies
+- read stock prices realtime and store locally for a longer period of time
+- Users can view their portfolio and the financial data of the companies they are invested in
+- Users can view the historical data of the stock prices and financial data of the companies
+- Users can view financial parameters of their portfolio, such as today P&L, total P&L, etc.
+
+Backend:
+- fastapi
+- SQLAlchemy
+- PostgreSQL
+
+Frontend:
+- React
+- Tailwind CSS
+- Redux (for state management)
+- Axios (for API calls)
+- React Router (for routing)
+- Agrid (for data tables)
+- Recharts (for charts and visualizations)
+
+Mobile:
+- React Native
+- Redux (for state management)
+- Axios (for API calls)
+- React Navigation (for routing)
+- Agrid (for data tables)
+- Recharts (for charts and visualizations)
+
+DB:
+- PostgreSQL
+
+APIs:
+- Google auth API
+- CSE API for stock prices
