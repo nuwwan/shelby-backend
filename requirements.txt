@@ -4,7 +4,11 @@ GIT Repository:
 backend: https://github.com/nuwwan/shelby-backend
 frontend: https://github.com/nuwwan/shelby-frontend
 
-This app mainlt tracks the company fanancials and user portfolio datils. This will have past variations of the securities prices for.a longer period of time
+This app mainlt tracks the company fanancials and user portfolio datils. This will have past variations 
+of the securities prices for.a longer period of time. Moomoo platform is a good example of the type of app 
+I want to build. The main focus of this app will be on the financial data of the companies and the portfolio 
+management of the users. The app will have a simple and user-friendly interface, and will be accessible on 
+both web and mobile platforms.
 
 Users:
 All users will extend from the base user model.
@@ -13,13 +17,19 @@ All users will extend from the base user model.
 - Feeders
 
 Features:
+Authentication:
 - User authentication and authorization(for now,will use google auth and basic email and password auth)
+User Management:
+- Users can invite other users to join the platform.
+User financeal data management:
 - Feeders can add and update the financial data of the companies
 - read stock prices realtime and store locally for a longer period of time
 - Users can view their portfolio and the financial data of the companies they are invested in
 - Users can view the historical data of the stock prices and financial data of the companies
 - Users can view financial parameters of their portfolio, such as today P&L, total P&L, etc.
-
+- Users can add to favorite companies.
+Securities information management:
+- Feeders can add and update the company financials data.
 Backend:
 - fastapi
 - SQLAlchemy
@@ -48,3 +58,80 @@ DB:
 APIs:
 - Google auth API
 - CSE API for stock prices
+
+Models
+User authntication and user management:
+1. Auth user
+- id
+- email
+- password
+- name
+- created_at
+- updated_at
+- is_active
+- is_superuser
+- is_feeder
+- is_verified
+- role (admin, regular user, feeder)
+2. Profile
+- id
+- user_id
+- bio
+- avatar_url
+- address
+- phone_number
+- is_verified
+- birth_date
+Companies and financial data:
+1. Company
+- id
+- name
+- ticker
+- sector
+- industry
+- started date
+- business summary
+2. FinancialData
+- id
+- company_id
+- date
+- revenue
+- net_income
+- eps
+- pe_ratio
+- market_cap
+- dividend_yield
+3. Company Financails
+This will have the financials of the company for quarter wise. All financial parameters of the income statement,
+balance sheet and cash flow statement will be stored in this model. Derived parameters such as pe ratio, market cap, 
+dividend yield will be calculated on demand(not stored in the database) and will be sent to the frontend.
+- id
+- company_id
+- term/quarter
+- revenue
+- net_income
+- eps
+TODO: - add more financial parameters to the company financials model
+4. Trade
+- id
+- user_id
+- company_id
+- quantity
+- price
+- trade_type (buy/sell)
+- date
+5. FavoriteCompany
+- id
+- user_id
+- company_id
+6. StockPrice
+- id
+- company_id
+- date
+- open_price
+- close_price
+- high_price
+- low_price
+- volume
+7. Portfolio(still not sure about this model, will decide later)
+
