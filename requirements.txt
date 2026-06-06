@@ -17,19 +17,33 @@ All users will extend from the base user model.
 - Feeders
 
 Features:
-Authentication:
-- User authentication and authorization(for now,will use google auth and basic email and password auth)
-User Management:
-- Users can invite other users to join the platform.
-User financeal data management:
-- Feeders can add and update the financial data of the companies
-- read stock prices realtime and store locally for a longer period of time
-- Users can view their portfolio and the financial data of the companies they are invested in
-- Users can view the historical data of the stock prices and financial data of the companies
-- Users can view financial parameters of their portfolio, such as today P&L, total P&L, etc.
-- Users can add to favorite companies.
-Securities information management:
-- Feeders can add and update the company financials data.
+1. Authentication:
+1.1 User can register and login using email and password.
+1.2 User can also login using Google auth API.
+1.3 Password reset functionality will be implemented.
+1.4 Verify email functionality will be implemented.
+1.5 Password reset functionality will be implemented.
+1.6 Delete account functionality will be implemented.
+1.7 Admin can manage users, such as activating/deactivating accounts, assigning roles, etc.
+
+2. User Management:
+2.1 User can view their profile and update their information.
+2.2 Users can invite other users to join the platform.
+
+3. User financeal data management:
+3.1 Feeders can add and update the financial data of the companies
+3.2 Users can read stock prices in real-time and store them locally for a longer period of time
+3.3 Users can view their portfolio and the financial data of the companies they are invested in
+3.4 Users can view the historical data of the stock prices and financial data of the companies
+3.5 Users can view financial parameters of their portfolio, such as today P&L, total P&L, etc.
+3.6 Users can add to favorite companies.
+
+4. Securities information management:
+4.1 Feeders can add and update the company financials data.
+4.2 
+
+System setup:
+Whole sulution will have 3 components, backend, frontend and mobile. 
 Backend:
 - fastapi
 - SQLAlchemy
@@ -58,80 +72,4 @@ DB:
 APIs:
 - Google auth API
 - CSE API for stock prices
-
-Models
-User authntication and user management:
-1. Auth user
-- id
-- email
-- password
-- name
-- created_at
-- updated_at
-- is_active
-- is_superuser
-- is_feeder
-- is_verified
-- role (admin, regular user, feeder)
-2. Profile
-- id
-- user_id
-- bio
-- avatar_url
-- address
-- phone_number
-- is_verified
-- birth_date
-Companies and financial data:
-1. Company
-- id
-- name
-- ticker
-- sector
-- industry
-- started date
-- business summary
-2. FinancialData
-- id
-- company_id
-- date
-- revenue
-- net_income
-- eps
-- pe_ratio
-- market_cap
-- dividend_yield
-3. Company Financails
-This will have the financials of the company for quarter wise. All financial parameters of the income statement,
-balance sheet and cash flow statement will be stored in this model. Derived parameters such as pe ratio, market cap, 
-dividend yield will be calculated on demand(not stored in the database) and will be sent to the frontend.
-- id
-- company_id
-- term/quarter
-- revenue
-- net_income
-- eps
-TODO: - add more financial parameters to the company financials model
-4. Trade
-- id
-- user_id
-- company_id
-- quantity
-- price
-- trade_type (buy/sell)
-- date
-5. FavoriteCompany
-- id
-- user_id
-- company_id
-6. StockPrice
-- id
-- company_id
-- date
-- open_price
-- close_price
-- high_price
-- low_price
-- volume
-7. Portfolio(still not sure about this model, will decide later)
 
