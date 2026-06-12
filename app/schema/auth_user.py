@@ -27,3 +27,17 @@ class AuthUserResponse(AuthUserCreate):
     role: str
 
     model_config = ConfigDict(from_attributes=True)
+
+# Payload for registering a new user.
+class Register(BaseModel):
+    name: str
+    email: str
+    password: str
+
+
+# Payload for logging in an existing user.
+class LoginUser(BaseModel):
+    email: str
+    password: str
+
+# 
